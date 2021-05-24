@@ -44,7 +44,7 @@ namespace CashTransferAPI.Infrastructure.Repositories
             return balance;
         }
 
-        public Transaction MakeTransfer(TransactionModel model, Balance user, Balance beneficiary)
+        public async Task<Transaction> MakeTransfer(TransactionModel model, Balance user, Balance beneficiary)
         {
             model.Reference = Guid.NewGuid().ToString("N");
             user.AccountBalance -= model.Amount;
@@ -53,8 +53,8 @@ namespace CashTransferAPI.Infrastructure.Repositories
 
             var transaction = _mapper.Map<Transaction>(model);
 
-            _context.Transactions.Add(transaction);
-            _context.SaveChanges();
+            await _context.Transactions.AddAsync(transaction);
+            await _context.SaveChangesAsync();
 
             return transaction;
         }
@@ -62,8 +62,9 @@ namespace CashTransferAPI.Infrastructure.Repositories
         public bool Delete(Guid reference)
         {
             var transaction = _context.Transactions.FirstOrDefault(m => m.Reference == reference);
+            if (transaction == null) return false;
             var result = _context.Transactions.Remove(transaction);
-            if (result == null) return false;
+            _context.SaveChanges();
             return true;
         }
     }

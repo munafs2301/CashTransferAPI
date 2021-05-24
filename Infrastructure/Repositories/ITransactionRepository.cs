@@ -1,6 +1,7 @@
 ﻿using CashTransferAPI.Data.Models;
 using CashTransferAPI.Enitities;
 using System;
+using System.Threading.Tasks;
 
 namespace CashTransferAPI.Infrastructure.Repositories
 {
@@ -10,6 +11,6 @@ namespace CashTransferAPI.Infrastructure.Repositories
         TransactionModel[] GetAllTransactions();
         Balance GetBalance(double accountNumber);
         TransactionModel GetTransaction(Guid reference);
-        Transaction MakeTransfer(TransactionModel model, Balance user, Balance beneficiary);
+        Task<Transaction> MakeTransfer(TransactionModel model, Balance user, Balance beneficiary);
     }
 }
