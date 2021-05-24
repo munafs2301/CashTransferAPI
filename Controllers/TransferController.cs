@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CashTransferAPI.Data.Models;
-using CashTransferAPI.Enitities;
 using CashTransferAPI.Infrastructure.Repositories;
-using CashTransferAPI.Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace CashTransferAPI.Controllers
 {
@@ -35,16 +30,16 @@ namespace CashTransferAPI.Controllers
             var model = _transactionRepo.GetAllTransactions();
             return model;
         }
-               
+
         [HttpGet("{reference}")]
         public ActionResult<TransactionModel> Get(Guid reference)
         {
             var model = _transactionRepo.GetTransaction(reference);
             return model;
         }
-                
+
         [HttpPost]
-        public ActionResult<TransactionModel> Post(TransactionModel model)
+        public async Task<ActionResult<TransactionModel>> Post(TransactionModel model)
         {
             try
             {
@@ -66,7 +61,7 @@ namespace CashTransferAPI.Controllers
                 }
 
 
-                var transaction = _transactionRepo.MakeTransfer(model, user, beneficiary);
+                var transaction = await _transactionRepo.MakeTransfer(model, user, beneficiary);
 
                 var url = _link.GetPathByAction("Get", "Transfer");
 
@@ -77,7 +72,7 @@ namespace CashTransferAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
         }
-               
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
