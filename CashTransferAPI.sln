@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashTransferAPI", "CashTransferAPI.csproj", "{40BC9DA3-84EF-4DB6-91E3-833D0B377C04}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseLibrary.API", "..\CoreApiFundamentals\CourseLibrary.API\CourseLibrary.API.csproj", "{8A21E5FA-01CF-4D9F-AF07-C2302B557C14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreCodeCamp2", "..\CoreApiFundamentals\CoreCodeCamp2\CoreCodeCamp2.csproj", "{E176C066-11EE-40CC-9883-581427405542}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{40BC9DA3-84EF-4DB6-91E3-833D0B377C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40BC9DA3-84EF-4DB6-91E3-833D0B377C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40BC9DA3-84EF-4DB6-91E3-833D0B377C04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A21E5FA-01CF-4D9F-AF07-C2302B557C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A21E5FA-01CF-4D9F-AF07-C2302B557C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A21E5FA-01CF-4D9F-AF07-C2302B557C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A21E5FA-01CF-4D9F-AF07-C2302B557C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E176C066-11EE-40CC-9883-581427405542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E176C066-11EE-40CC-9883-581427405542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E176C066-11EE-40CC-9883-581427405542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E176C066-11EE-40CC-9883-581427405542}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
