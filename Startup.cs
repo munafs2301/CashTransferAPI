@@ -33,9 +33,11 @@ namespace CashTransferAPI
             {
                 setupAction.ReturnHttpNotAcceptable = true;
             }).AddXmlDataContractSerializerFormatters();
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddDbContext<CashTransferAPIContext>();
-            services.AddScoped<ITransactionRepository, TransactionRepository>();
+
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
