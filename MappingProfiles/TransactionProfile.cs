@@ -1,22 +1,21 @@
-﻿using AutoMapper;
-using CashTransferAPI.Data.Models;
+﻿using CashTransferAPI.Data.Models;
 using CashTransferAPI.Enitities;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CashTransferAPI.Infrastructure.Services
+namespace CashTransferAPI.MappingProfiles
 {
-    public class MappingProfile: Profile
+    public class TransactionProfile: Profile
     {
-        public MappingProfile()
+        public TransactionProfile()
         {
             CreateMap<Transaction, TransactionModel>()
                .ForMember(c => c.AccountNumber, o => o.MapFrom(m => m.Balance.AccountNumber))
                .ReverseMap();
-               //.ForMember(m => m.Balance, o => o.Ignore());
+            //.ForMember(m => m.Balance, o => o.Ignore());
         }
-
     }
 }

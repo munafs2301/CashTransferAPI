@@ -3,7 +3,7 @@ using CashTransferAPI.Enitities;
 using System;
 using System.Threading.Tasks;
 
-namespace CashTransferAPI.Infrastructure.Repositories
+namespace CashTransferAPI.Repositories
 {
     public interface ITransactionRepository
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CashTransferAPI.Data.Models;
-using CashTransferAPI.Infrastructure.Repositories;
+using CashTransferAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;

@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
+using CashTransferAPI.Data.Contexts;
 using CashTransferAPI.Data.Models;
 using CashTransferAPI.Enitities;
-using CashTransferAPI.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CashTransferAPI.Infrastructure.Repositories
+namespace CashTransferAPI.Repositories
 {
     public class TransactionRepository : ITransactionRepository , IDisposable
     {
