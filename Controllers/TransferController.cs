@@ -43,25 +43,25 @@ namespace CashTransferAPI.Controllers
         {
             try
             {
-                var user = _transactionRepo.GetBalance(model.AccountNumber);
-                if (user == null)
+                var userAccount = _transactionRepo.GetBalance(model.AccountNumber);
+                if (userAccount == null)
                 {
                     return NotFound("User Account does not exist");
                 }
 
-                var beneficiary = _transactionRepo.GetBalance(model.BeneficiaryAccount);
-                if (beneficiary == null)
+                var beneficiaryAccount = _transactionRepo.GetBalance(model.BeneficiaryAccount);
+                if (beneficiaryAccount == null)
                 {
                     return NotFound("Beneficiary Account does not exist");
                 }
 
-                if (user.AccountBalance < model.Amount)
+                if (userAccount.AccountBalance < model.Amount)
                 {
                     return BadRequest("You do not have enough cash to make this transfer");
                 }
 
 
-                var transaction = await _transactionRepo.MakeTransfer(model, user, beneficiary);
+                var transaction = await _transactionRepo.MakeTransfer(model, userAccount, beneficiaryAccount);
 
                 var url = _link.GetPathByAction("Get", "Transfer");
 
@@ -81,8 +81,8 @@ namespace CashTransferAPI.Controllers
         [HttpDelete("{reference}")]
         public ActionResult<TransactionModel> Delete(Guid reference)
         {
-            var result = _transactionRepo.Delete(reference);
-            if (result == false)
+            var status = _transactionRepo.Delete(reference);
+            if (status == false)
             {
                 return BadRequest("This transaction does not exist");
             }
